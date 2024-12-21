@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  --foreground: white;
+  
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+ 
+    --foreground: white;
   }
 }
 
@@ -19,3 +20,29 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+@keyframes matrixEffect {
+  from { color: transparent; }
+  to { color: #CEEC5F; }
+}
+
+@layer components {
+  .matrix-bg {
+    background-color: black;
+    color: #CEEC5F;
+    font-family: 'Courier New', monospace;
+    overflow: hidden;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.content {
+  position: relative; /* Higher stacking context than MatrixBackground */
+  z-index: 10; /* Ensure this is higher than the -1 of the Matrix background */
+  min-height: 100vh; /* Full view height */
+
+  color: white; /* Choose a contrasting color */
+}
+
